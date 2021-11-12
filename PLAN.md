@@ -14,11 +14,24 @@ var y = event.clientY - bounds.top;
 return {x: x, y: y};
 }
 
+// React Style
+
+- Box Component that renders conditionally on click
+- Box with props that updates position based on mousePosition
+
+Popup Component
+<Popup mousePosition={position}>
+
 - PENDING - Get responsive coordinates
 
 ## Dropdown on click location
 
 - Absolute position elements, with Top and left being clientX or X (depending on position of element)
+
+1. Make a box appear on Click position
+2. Wrap that box in PopupTrigger. This will make this the reference. (https://chakra-ui.com/docs/overlay/popover)
+3. Try to put a menu there
+
 - Close when clicked out of div:
 
 document.addEventListener('click', function(e) {

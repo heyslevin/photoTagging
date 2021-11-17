@@ -6,20 +6,10 @@ import Popup from "../ui/Popup";
 
 import beach from "../../img/beach.jpg";
 
-function mousePosition(onOpen, setPosition) {
-  document.addEventListener("mousemove", function (e) {
-    logKey(e, onOpen, setPosition);
-  });
-}
-
-function logKey(e, onOpen, setPosition) {
-  let position = { x: e.clientX, y: e.clientY };
-  document.addEventListener("click", () =>
-    displayMenu(position, onOpen, setPosition)
-  );
-}
-
-function displayMenu(position, onOpen, setPosition) {
+function displayMenu(position, onOpen, onClose, setPosition, openMenu) {
+  if (!openMenu) {
+    onClose();
+  }
   onOpen();
   setPosition(position);
 }
@@ -31,9 +21,19 @@ const ImageView = (props) => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  function getMousePosition(e) {
+    let position = { x: e.clientX, y: e.clientY };
+    let openMenu = e.target.closest("#menu-list-6");
+
+    displayMenu(position, onOpen, onClose, setPosition, openMenu);
+  }
+
   useEffect(() => {
-    mousePosition(onOpen, setPosition);
-  }, []);
+    document.addEventListener("click", getMousePosition);
+    return () => {
+      document.removeEventListener("click", getMousePosition);
+    };
+  });
   return (
     <React.Fragment>
       <Popup isOpen={isOpen} onClose={onClose} position={position} />

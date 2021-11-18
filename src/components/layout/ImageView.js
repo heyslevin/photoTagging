@@ -24,8 +24,11 @@ const ImageView = (props) => {
   function getMousePosition(e) {
     let position = { x: e.clientX, y: e.clientY };
     let openMenu = e.target.closest("#menu-list-6");
+    console.log(position);
 
     displayMenu(position, onOpen, onClose, setPosition, openMenu);
+
+    setShowMenu(true);
   }
 
   useEffect(() => {

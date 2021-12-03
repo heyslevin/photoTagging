@@ -32,8 +32,8 @@ const ImageView = (props) => {
 
   const locations = {
     waldo: { pointA: { x: 1824, y: 711 }, pointB: { x: 1877, y: 789 } },
-    wenda: { x: 100, y: 100 },
-    whitebeard: { x: 100, y: 100 },
+    wenda: { pointA: { x: 2296, y: 772 }, pointB: { x: 2344, y: 818 } },
+    whitebeard: { pointA: { x: 783, y: 650 }, pointB: { x: 856, y: 747 } },
   };
 
   const checkBounds = (clickedCoordinates, character) => {
@@ -59,6 +59,7 @@ const ImageView = (props) => {
   function getMousePosition(e) {
     let mousePosition = { x: e.clientX, y: e.clientY };
     var bounds = e.target.getBoundingClientRect();
+    console.log(mousePosition);
 
     let currentHeight = waldoImage.current.height;
 
@@ -68,6 +69,7 @@ const ImageView = (props) => {
     // Proportional mousemousePosition of mouse on image
     var x = Math.floor((e.clientX - bounds.left) / imageProportion);
     var y = Math.floor((e.clientY - bounds.top) / imageProportion);
+    console.log(x, y);
     setRelativeCoords({ x: x, y: y });
 
     displayMenu(setMousePosition, onOpen, onClose, isOpen, mousePosition);

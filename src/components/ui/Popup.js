@@ -31,16 +31,13 @@ const Popup = ({
     >
       <Menu isOpen={isOpen}>
         <MenuList onMouseLeave={onClose}>
-          <MenuItem onClick={checkBounds} value="nothing">
-            Position is {JSON.stringify(relativeCoords)}
-          </MenuItem>
           <MenuItem onClick={handleClick} value="waldo">
             Waldo
           </MenuItem>
-          <MenuItem onClick={checkCoordinates} value="wenda">
+          <MenuItem onClick={handleClick} value="wenda">
             Walda
           </MenuItem>
-          <MenuItem onClick={checkCoordinates} value="whitebeard">
+          <MenuItem onClick={handleClick} value="whitebeard">
             Magician
           </MenuItem>
         </MenuList>

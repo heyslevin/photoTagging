@@ -6,21 +6,7 @@ import Popup from "../ui/Popup";
 
 import beach from "../../img/beach.jpg";
 
-function displayMenu(setMousePosition, onOpen, onClose, isOpen, mousePosition) {
-  if (isOpen) {
-    onClose();
-  } else {
-    setMousePosition(mousePosition);
-
-    onOpen();
-  }
-}
-
-function roundDown(num) {
-  return Math.round(num * 100) / 100;
-}
-
-const ImageView = (props) => {
+const ImageView = ({ setFoundWaldo, setFoundWenda, setFoundMagician }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [imageNaturalHeight, setImageNaturalHeight] = useState();
@@ -36,6 +22,22 @@ const ImageView = (props) => {
     whitebeard: { pointA: { x: 783, y: 650 }, pointB: { x: 856, y: 747 } },
   };
 
+  const displayMenu = (
+    setMousePosition,
+    onOpen,
+    onClose,
+    isOpen,
+    mousePosition
+  ) => {
+    if (isOpen) {
+      onClose();
+    } else {
+      setMousePosition(mousePosition);
+
+      onOpen();
+    }
+  };
+
   const checkBounds = (clickedCoordinates, character) => {
     let characterCoords = locations[character];
 
@@ -46,9 +48,7 @@ const ImageView = (props) => {
       clickedCoordinates.y >= characterCoords.pointA.y &&
       clickedCoordinates.y <= characterCoords.pointB.y;
 
-    let found = topBounds && bottomBounds;
-
-    alert(`${character} was ${found}`);
+    return topBounds && bottomBounds;
   };
 
   useEffect(() => {
@@ -76,14 +76,37 @@ const ImageView = (props) => {
     setShowMenu(true);
   }
 
+  const handleClick = (e) => {
+    let character = e.target.value;
+    let checkFound = checkBounds(relativeCoords, character);
+    if (!checkFound) {
+      onClose();
+    } else {
+      switch (character) {
+        case "waldo":
+          setFoundWaldo(true);
+          break;
+        case "wenda":
+          setFoundWenda(true);
+          break;
+        case "whitebeard":
+          setFoundMagician(true);
+          break;
+        default:
+          alert("error in character finding");
+          break;
+      }
+      onClose();
+    }
+  };
+
   return (
     <React.Fragment>
       <Popup
         isOpen={isOpen}
         onClose={onClose}
         mousePosition={mousePosition}
-        relativeCoords={relativeCoords}
-        checkBounds={checkBounds}
+        handleClick={handleClick}
       />
       <Image
         src={beach}

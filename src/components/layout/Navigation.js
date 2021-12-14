@@ -3,15 +3,31 @@ import { Box, Center, Flex, Heading, HStack, Text } from "@chakra-ui/layout";
 import { Link } from "@chakra-ui/react";
 import React from "react";
 
-const Navbar = () => {
+import waldoImage from "../../img/characters/waldo.png";
+import wendaImage from "../../img/characters/wenda.png";
+import whitebeardImage from "../../img/characters/whitebeard.png";
+
+const Navbar = ({ foundWaldo, foundWenda, foundMagician }) => {
   return (
     <HStack p={4}>
       <Flex flex="1" justify="flex-start">
         <HStack>
           <Text>Find Waldo</Text>
-          <Avatar name="Waldo" />
-          <Avatar name="Magician" />
-          <Avatar name="C" />
+          <Avatar
+            bg={foundWaldo ? "green" : "red"}
+            name="Waldo"
+            src={waldoImage}
+          />
+          <Avatar
+            bg={foundWenda ? "green" : "red"}
+            name="Wenda"
+            src={wendaImage}
+          />
+          <Avatar
+            bg={foundMagician ? "green" : "red"}
+            name="Magician"
+            src={whitebeardImage}
+          />
         </HStack>
       </Flex>
       <Flex flex="1" justify="center">

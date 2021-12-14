@@ -4,22 +4,10 @@ import { Box, Heading, Link } from "@chakra-ui/layout";
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import React from "react";
 
-const Popup = ({
-  isOpen,
-  onClose,
-  mousePosition,
-  relativeCoords,
-  checkBounds,
-}) => {
+const Popup = ({ isOpen, onClose, mousePosition, handleClick }) => {
   let checkCoordinates = (e) => {
     let character = e.target.value;
     console.log(character);
-  };
-
-  const handleClick = (e) => {
-    let character = e.target.value;
-    console.log(character);
-    checkBounds(relativeCoords, character);
   };
 
   return (
@@ -35,7 +23,7 @@ const Popup = ({
             Waldo
           </MenuItem>
           <MenuItem onClick={handleClick} value="wenda">
-            Walda
+            Wenda
           </MenuItem>
           <MenuItem onClick={handleClick} value="whitebeard">
             Magician

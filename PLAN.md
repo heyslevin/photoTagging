@@ -6,13 +6,7 @@
 
 ### Check if coordinate is within bounds
 
-- Create bounding box based on coordinates
-  - Point A: (x-10),(y-10)
-  - Point B: (x+10),(y+10)
-- Check if mouseclick is within bounds
-  if (x > x-10 && x < x+10 && y > x-10 && y < y+10) {
-  you hit the box
-  }
+### Do actions when selected character
 
 ### Time and get score
 

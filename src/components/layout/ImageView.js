@@ -51,15 +51,19 @@ const ImageView = ({ setFoundWaldo, setFoundWenda, setFoundMagician }) => {
     return topBounds && bottomBounds;
   };
 
-  useEffect(() => {
-    let imageRef = waldoImage.current;
-    setImageNaturalHeight(imageRef.naturalHeight);
-  }, []);
+  // useEffect(() => {
+  //   let imageRef = waldoImage.current;
+  //   setImageNaturalHeight(imageRef.naturalHeight);
+  // }, []);
+
+  function handleImgLoad(e) {
+    let image = e.target;
+    setImageNaturalHeight(image.naturalHeight);
+  }
 
   function getMousePosition(e) {
     let mousePosition = { x: e.clientX, y: e.clientY };
     var bounds = e.target.getBoundingClientRect();
-    console.log(mousePosition);
 
     let currentHeight = waldoImage.current.height;
 
@@ -114,6 +118,7 @@ const ImageView = ({ setFoundWaldo, setFoundWenda, setFoundMagician }) => {
         onClick={getMousePosition}
         className="waldoImage"
         ref={waldoImage}
+        onLoad={handleImgLoad}
       />
     </React.Fragment>
   );

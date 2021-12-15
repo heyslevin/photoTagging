@@ -5,7 +5,9 @@
 ### Dropdown on click location
 
 ### Check if coordinate is within bounds
-
+- State has Characters: found / not found
+- On correct found, change character state
+- Cross of Character in nav bar
 ### Do actions when selected character
 
 ### Time and get score

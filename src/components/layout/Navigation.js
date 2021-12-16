@@ -2,6 +2,7 @@ import { Avatar } from "@chakra-ui/avatar";
 import { Box, Center, Flex, Heading, HStack, Text } from "@chakra-ui/layout";
 import { Link } from "@chakra-ui/react";
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
@@ -24,7 +25,9 @@ const Navbar = ({ foundWaldo, foundWenda, foundMagician }) => {
     <HStack p={4}>
       <Flex flex="1" justify="flex-start">
         <HStack>
-          <Text>Find Waldo</Text>
+          <Link as={RouterLink} to="/">
+            Find Waldo
+          </Link>
           <AvatarBox
             name="Waldo"
             src={waldoImage}
@@ -48,11 +51,15 @@ const Navbar = ({ foundWaldo, foundWenda, foundMagician }) => {
       </Flex>
       <Flex flex="1" justify="center">
         <Center>
-          <Heading>Where's Waldo?</Heading>
+          <Heading as={RouterLink} to="/">
+            Where's Waldo?
+          </Heading>
         </Center>
       </Flex>
       <Flex flex="1" justify="flex-end">
-        <Link href="www.firmalt.com">View Leaderboard</Link>
+        <Link as={RouterLink} to="/leaderboard">
+          View Leaderboard
+        </Link>
       </Flex>
     </HStack>
   );

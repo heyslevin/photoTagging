@@ -2,9 +2,9 @@ import { Box, Heading } from "@chakra-ui/layout";
 import { Image, useDisclosure } from "@chakra-ui/react";
 import React, { useEffect, useState, useRef } from "react";
 
-import Popup from "../ui/Popup";
+import Popup from "../components/ui/Popup";
 
-import beach from "../../img/beach.jpg";
+import beach from "../img/beach.jpg";
 
 const ImageView = ({ setFoundWaldo, setFoundWenda, setFoundMagician }) => {
   const [showMenu, setShowMenu] = useState(false);

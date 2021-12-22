@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Navigation";
 
 import ImageView from "./views/ImageView";
 import Leaderboard from "./views/Leaderboard";
+import Welcome from "./views/Welcome";
 
 function App() {
   const [foundWaldo, setFoundWaldo] = useState(false);
@@ -20,8 +21,9 @@ function App() {
         foundMagician={foundMagician}
       />
       <Routes>
+        <Route path="/" element={<Welcome />} />
         <Route
-          path="/"
+          path="/game"
           element={
             <ImageView
               setFoundWaldo={setFoundWaldo}

@@ -1,5 +1,5 @@
 import { Box, Heading } from "@chakra-ui/layout";
-import { Image, useDisclosure } from "@chakra-ui/react";
+import { Image, useDisclosure, useToast } from "@chakra-ui/react";
 import React, { useEffect, useState, useRef } from "react";
 
 import Popup from "../components/ui/Popup";
@@ -15,6 +15,9 @@ const ImageView = ({ setFoundWaldo, setFoundWenda, setFoundMagician }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   let waldoImage = useRef();
+  const toast = useToast({
+    variant: "solid",
+  });
 
   const locations = {
     waldo: { pointA: { x: 1824, y: 711 }, pointB: { x: 1877, y: 789 } },
@@ -82,9 +85,16 @@ const ImageView = ({ setFoundWaldo, setFoundWenda, setFoundMagician }) => {
 
   const handleClick = (e) => {
     let character = e.target.value;
+    let capitalized = character.charAt(0).toUpperCase() + character.slice(1);
+    console.log(capitalized);
     let checkFound = checkBounds(relativeCoords, character);
     if (!checkFound) {
       onClose();
+      toast({
+        title: `Sorry, no ${capitalized} there.`,
+        duration: 1800,
+        position: "top",
+      });
     } else {
       switch (character) {
         case "waldo":

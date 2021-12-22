@@ -25,7 +25,7 @@ const Navbar = ({ foundWaldo, foundWenda, foundMagician }) => {
     <HStack p={4}>
       <Flex flex="1" justify="flex-start">
         <HStack>
-          <Link as={RouterLink} to="/">
+          <Link as={RouterLink} to="/game">
             Find Waldo
           </Link>
           <AvatarBox
@@ -51,12 +51,15 @@ const Navbar = ({ foundWaldo, foundWenda, foundMagician }) => {
       </Flex>
       <Flex flex="1" justify="center">
         <Center>
-          <Heading as={RouterLink} to="/">
+          <Heading as={RouterLink} to="/game">
             Where's Waldo?
           </Heading>
         </Center>
       </Flex>
       <Flex flex="1" justify="flex-end">
+        <Text pr={30} color="gray.500">
+          1:00
+        </Text>
         <Link as={RouterLink} to="/leaderboard">
           View Leaderboard
         </Link>

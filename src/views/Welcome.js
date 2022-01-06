@@ -1,7 +1,6 @@
 import {
   Button,
   Center,
-  Container,
   Heading,
   List,
   ListItem,
@@ -14,7 +13,14 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
 import React from "react";
 
-const Welcome = () => {
+const Welcome = ({ setInitialTime, setGameStart }) => {
+  const handleStartClick = () => {
+    let startTime = new Date().getTime();
+    console.log(startTime);
+    setInitialTime(startTime);
+    setGameStart(true);
+  };
+
   return (
     <Center h="500px">
       <VStack>
@@ -44,6 +50,7 @@ const Welcome = () => {
             align="center"
             as={RouterLink}
             to="/game"
+            onClick={handleStartClick}
           >
             Get Started
           </Button>

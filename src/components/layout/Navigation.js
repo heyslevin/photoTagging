@@ -1,5 +1,5 @@
 import { Avatar } from "@chakra-ui/avatar";
-import { Box, Center, Flex, Heading, HStack, Text } from "@chakra-ui/layout";
+import { Center, Flex, Heading, HStack, Text } from "@chakra-ui/layout";
 import { Link } from "@chakra-ui/react";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
@@ -10,9 +10,11 @@ import waldoImage from "../../img/characters/waldo.png";
 import wendaImage from "../../img/characters/wenda.png";
 import whitebeardImage from "../../img/characters/whitebeard.png";
 
+import Timer from "../ui/Timer";
+
 const AvatarBox = motion(Avatar);
 
-const Navbar = ({ foundWaldo, foundWenda, foundMagician }) => {
+const Navbar = ({ foundWaldo, foundWenda, foundMagician, gameStart }) => {
   const variants = {
     found: {
       backgroundColor: "green",
@@ -57,9 +59,7 @@ const Navbar = ({ foundWaldo, foundWenda, foundMagician }) => {
         </Center>
       </Flex>
       <Flex flex="1" justify="flex-end">
-        <Text pr={30} color="gray.500">
-          1:00
-        </Text>
+        {gameStart && <Timer />}
         <Link as={RouterLink} to="/leaderboard">
           View Leaderboard
         </Link>

@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { Container, Heading } from "@chakra-ui/react";
 import { useState } from "react";
 import Navbar from "./components/layout/Navigation";
 
@@ -12,6 +11,8 @@ function App() {
   const [foundWaldo, setFoundWaldo] = useState(false);
   const [foundWenda, setFoundWenda] = useState(false);
   const [foundMagician, setFoundMagician] = useState(false);
+  const [initialTime, setInitialTime] = useState("no time");
+  const [gameStart, setGameStart] = useState(false);
 
   return (
     <Router>
@@ -19,9 +20,19 @@ function App() {
         foundWaldo={foundWaldo}
         foundWenda={foundWenda}
         foundMagician={foundMagician}
+        initialTime={initialTime}
+        gameStart={gameStart}
       />
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route
+          path="/"
+          element={
+            <Welcome
+              setInitialTime={setInitialTime}
+              setGameStart={setGameStart}
+            />
+          }
+        />
         <Route
           path="/game"
           element={

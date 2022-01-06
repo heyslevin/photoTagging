@@ -1,15 +1,8 @@
-import { Button } from "@chakra-ui/button";
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Box, Heading, Link } from "@chakra-ui/layout";
-import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
+import { Box } from "@chakra-ui/layout";
+import { Menu, MenuItem, MenuList } from "@chakra-ui/menu";
 import React from "react";
 
 const Popup = ({ isOpen, onClose, mousePosition, handleClick }) => {
-  let checkCoordinates = (e) => {
-    let character = e.target.value;
-    console.log(character);
-  };
-
   return (
     <Box
       position="absolute"

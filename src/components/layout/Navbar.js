@@ -14,7 +14,7 @@ import Timer from "../ui/Timer";
 
 const AvatarBox = motion(Avatar);
 
-const Navbar = ({ foundWaldo, foundWenda, foundMagician, gameStart }) => {
+const Navbar = ({ gameStart, foundCharacters }) => {
   const variants = {
     found: {
       backgroundColor: "green",
@@ -35,19 +35,19 @@ const Navbar = ({ foundWaldo, foundWenda, foundMagician, gameStart }) => {
             src={waldoImage}
             whileHover={{ scale: 1.1 }}
             variants={variants}
-            animate={foundWaldo ? "found" : "notFound"}
+            animate={foundCharacters.waldo ? "found" : "notFound"}
           />
           <AvatarBox
             name="Wenda"
             src={wendaImage}
             variants={variants}
-            animate={foundWenda ? "found" : "notFound"}
+            animate={foundCharacters.wenda ? "found" : "notFound"}
           />
           <AvatarBox
             name="Magician"
             src={whitebeardImage}
             variants={variants}
-            animate={foundMagician ? "found" : "notFound"}
+            animate={foundCharacters.magician ? "found" : "notFound"}
           />
         </HStack>
       </Flex>

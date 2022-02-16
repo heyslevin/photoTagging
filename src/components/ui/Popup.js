@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/layout";
 import { Menu, MenuItem, MenuList } from "@chakra-ui/menu";
-import React from "react";
 
 const Popup = ({ isOpen, onClose, mousePosition, handleClick }) => {
   return (

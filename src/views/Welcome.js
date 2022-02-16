@@ -13,14 +13,7 @@ import { CheckCircleIcon } from "@chakra-ui/icons";
 import { Link as RouterLink } from "react-router-dom";
 import React from "react";
 
-const Welcome = ({ setInitialTime, setGameStart }) => {
-  const handleStartClick = () => {
-    let startTime = new Date().getTime();
-    console.log(startTime);
-    setInitialTime(startTime);
-    setGameStart(true);
-  };
-
+const Welcome = ({ setInitialTime, setGameStart, handleStartClick }) => {
   return (
     <Center h="500px">
       <VStack>

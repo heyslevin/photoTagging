@@ -1,12 +1,25 @@
 import { Box, Heading } from "@chakra-ui/layout";
-import { Image, useDisclosure, useToast } from "@chakra-ui/react";
+import { Image, useToast } from "@chakra-ui/react";
 import React, { useEffect, useState, useRef } from "react";
 
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from "@chakra-ui/react";
+
 import Popup from "../components/ui/Popup";
+import FinishPopup from "../components/ui/FinishPopup";
 
 import beach from "../img/beach.jpg";
 
-const ImageView = ({ setFoundWaldo, setFoundWenda, setFoundMagician }) => {
+const ImageView = ({ allFound, totalTime, setFoundCharacters }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [imageNaturalHeight, setImageNaturalHeight] = useState();
@@ -98,13 +111,24 @@ const ImageView = ({ setFoundWaldo, setFoundWenda, setFoundMagician }) => {
     } else {
       switch (character) {
         case "waldo":
-          setFoundWaldo(true);
+          setFoundCharacters((prevState) => ({
+            ...prevState,
+            waldo: true,
+          }));
           break;
         case "wenda":
-          setFoundWenda(true);
+          setFoundCharacters((prevState) => ({
+            ...prevState,
+            wenda: true,
+          }));
+
           break;
         case "whitebeard":
-          setFoundMagician(true);
+          setFoundCharacters((prevState) => ({
+            ...prevState,
+            magician: true,
+          }));
+
           break;
         default:
           alert("error in character finding");
@@ -122,6 +146,19 @@ const ImageView = ({ setFoundWaldo, setFoundWenda, setFoundMagician }) => {
         mousePosition={mousePosition}
         handleClick={handleClick}
       />
+      <FinishPopup totalTime={totalTime} allFound={allFound} />
+      {/* <Modal isOpen={isOpenModal} onClose={onCloseModal}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>You Win!</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>Your time was {totalTime}</ModalBody>
+          <ModalFooter>
+            <Button onClick={onCloseModal}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal> */}
+
       <Image
         src={beach}
         value="waldoImage"

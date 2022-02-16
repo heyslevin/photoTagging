@@ -59,11 +59,9 @@ function App() {
   return (
     <Router>
       <Navbar
-        // foundWaldo={foundWaldo}
-        // foundWenda={foundWenda}
-        // foundMagician={foundMagician}
         foundCharacters={foundCharacters}
         gameStart={gameStart}
+        allFound={allFound}
       />
       <Routes>
         <Route
@@ -79,9 +77,6 @@ function App() {
           path="/game"
           element={
             <ImageView
-              // setFoundWaldo={setFoundWaldo}
-              // setFoundWenda={setFoundWenda}
-              // setFoundMagician={setFoundMagician}
               allFound={allFound}
               totalTime={totalTime}
               setFoundCharacters={setFoundCharacters}

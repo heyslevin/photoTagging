@@ -14,7 +14,7 @@ import Timer from "../ui/Timer";
 
 const AvatarBox = motion(Avatar);
 
-const Navbar = ({ gameStart, foundCharacters }) => {
+const Navbar = ({ gameStart, foundCharacters, allFound }) => {
   const variants = {
     found: {
       backgroundColor: "green",
@@ -59,7 +59,7 @@ const Navbar = ({ gameStart, foundCharacters }) => {
         </Center>
       </Flex>
       <Flex flex="1" justify="flex-end">
-        {gameStart && <Timer />}
+        {gameStart && <Timer allFound={allFound} />}
         <Link as={RouterLink} to="/leaderboard">
           View Leaderboard
         </Link>

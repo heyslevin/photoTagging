@@ -2,10 +2,14 @@ import { Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-const Timer = () => {
+const Timer = ({ allFound }) => {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
+    if (allFound) {
+      return;
+    }
+
     const intervalId = setInterval(() => {
       setTime(time + 1);
     }, 1000);
@@ -28,12 +32,17 @@ const Timer = () => {
   };
 
   let timeFormat = formatTimer(time);
-
-  return (
-    <Text pr={30} color="gray.500">
-      {timeFormat}
-    </Text>
-  );
+  let finalTimer;
+  if (allFound) {
+    finalTimer = "";
+  } else {
+    finalTimer = (
+      <Text pr={30} color="gray.500">
+        {timeFormat}
+      </Text>
+    );
+  }
+  return finalTimer;
 };
 
 export default Timer;

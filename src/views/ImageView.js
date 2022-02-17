@@ -19,7 +19,12 @@ import FinishPopup from "../components/ui/FinishPopup";
 
 import beach from "../img/beach.jpg";
 
-const ImageView = ({ allFound, totalTime, setFoundCharacters }) => {
+const ImageView = ({
+  allFound,
+  totalTime,
+  setFoundCharacters,
+  setPlayerScores,
+}) => {
   const [showMenu, setShowMenu] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [imageNaturalHeight, setImageNaturalHeight] = useState();
@@ -146,7 +151,11 @@ const ImageView = ({ allFound, totalTime, setFoundCharacters }) => {
         mousePosition={mousePosition}
         handleClick={handleClick}
       />
-      <FinishPopup totalTime={totalTime} allFound={allFound} />
+      <FinishPopup
+        totalTime={totalTime}
+        allFound={allFound}
+        setPlayerScores={setPlayerScores}
+      />
       {/* <Modal isOpen={isOpenModal} onClose={onCloseModal}>
         <ModalOverlay />
         <ModalContent>

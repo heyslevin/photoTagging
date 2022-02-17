@@ -11,9 +11,12 @@ import {
   Heading,
   Input,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
-const FinishPopup = ({ totalTime, allFound }) => {
+const FinishPopup = ({ totalTime, allFound, setPlayerScores }) => {
+  const [name, setName] = useState();
+
   const {
     isOpen: isOpenModal,
     onOpen: onOpenModal,
@@ -30,6 +33,14 @@ const FinishPopup = ({ totalTime, allFound }) => {
     console.log(allFound);
   }, [allFound]);
 
+  const handleSaveClick = () => {
+    setPlayerScores((prevState) => [
+      ...prevState,
+      { name: name, time: totalTime },
+    ]);
+    onCloseModal();
+  };
+
   return (
     <Modal isOpen={isOpenModal} onClose={onCloseModal} isCentered>
       <ModalOverlay />
@@ -38,11 +49,19 @@ const FinishPopup = ({ totalTime, allFound }) => {
         <ModalCloseButton />
         <ModalBody>
           Your time was
-          <Heading size="3xl">{totalTime}</Heading>
+          <Heading size="3xl" color="green.300">
+            {totalTime}
+          </Heading>
         </ModalBody>
         <ModalFooter>
-          <Input mr={2} placeholder="Enter your name"></Input>
-          <Button onClick={onCloseModal}>Save Score</Button>
+          <Input
+            mr={2}
+            placeholder="Enter your name"
+            onChange={(e) => setName(e.target.value)}
+          ></Input>
+          <Button as={RouterLink} onClick={handleSaveClick} to="/leaderboard">
+            Save Score
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

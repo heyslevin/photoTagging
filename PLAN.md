@@ -40,3 +40,15 @@
   - Time elapsed
   - Home? Maybe
 - Waldoimage
+
+### Next
+
+- Render List of Scores in LeaderBoard
+  - players.map( player => {
+    return (
+    <Tr>
+    <Td>{player.name}</Td>
+    <Td isNumeric>{player.time}s</Td>
+    </Tr>
+    )
+    })

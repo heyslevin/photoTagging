@@ -15,7 +15,18 @@ import {
   TableCaption,
 } from "@chakra-ui/react";
 
-const Leaderboard = () => {
+const Leaderboard = ({ playerScores }) => {
+  console.log(playerScores);
+  const scoreList = playerScores.map((player) => {
+    console.log(player);
+    return (
+      <Tr>
+        <Td>{player.name}</Td>
+        <Td isNumeric>{player.time}</Td>
+      </Tr>
+    );
+  });
+
   return (
     <Container border="1px" borderRadius="md" mt={10}>
       <Table variant="striped" colorScheme="gray">
@@ -26,36 +37,7 @@ const Leaderboard = () => {
             <Th isNumeric>Time</Th>
           </Tr>
         </Thead>
-        <Tbody>
-          <Tr>
-            <Td>James Donovan</Td>
-            <Td isNumeric>3.05s</Td>
-          </Tr>
-          <Tr>
-            <Td>James Donovan</Td>
-            <Td isNumeric>3.05s</Td>
-          </Tr>
-          <Tr>
-            <Td>James Donovan</Td>
-            <Td isNumeric>3.05s</Td>
-          </Tr>
-          <Tr>
-            <Td>James Donovan</Td>
-            <Td isNumeric>3.05s</Td>
-          </Tr>
-          <Tr>
-            <Td>James Donovan</Td>
-            <Td isNumeric>3.05s</Td>
-          </Tr>
-          <Tr>
-            <Td>James Donovan</Td>
-            <Td isNumeric>3.05s</Td>
-          </Tr>
-          <Tr>
-            <Td>James Donovan</Td>
-            <Td isNumeric>3.05s</Td>
-          </Tr>
-        </Tbody>
+        <Tbody>{scoreList}</Tbody>
         <Tfoot>
           <Tr>
             <Th> </Th>

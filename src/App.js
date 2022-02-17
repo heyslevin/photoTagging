@@ -21,9 +21,13 @@ import {
 import { useEffect } from "react";
 
 function App() {
-  // const [foundWaldo, setFoundWaldo] = useState(false);
-  // const [foundWenda, setFoundWenda] = useState(false);
-  // const [foundMagician, setFoundMagician] = useState(false);
+  let initialScores = [
+    { name: "Jonathan Banks", time: 10.23 },
+    { name: "James Dean", time: 6.11 },
+    { name: "Sarah Connor", time: 3.23 },
+    { name: "Bill Max", time: 1.23 },
+    { name: "Tim Urban", time: 0.23 },
+  ];
 
   const [foundCharacters, setFoundCharacters] = useState({
     waldo: false,
@@ -34,6 +38,7 @@ function App() {
   const [gameStart, setGameStart] = useState(false);
   const [allFound, setAllFound] = useState(false);
   const [startTime, setStartTime] = useState(undefined);
+  const [playerScores, setPlayerScores] = useState(initialScores);
 
   //Handle Start Click in Welcome
   const handleStartClick = () => {
@@ -80,10 +85,14 @@ function App() {
               allFound={allFound}
               totalTime={totalTime}
               setFoundCharacters={setFoundCharacters}
+              setPlayerScores={setPlayerScores}
             />
           }
         />
-        <Route path="/leaderboard" element={<Leaderboard />} />{" "}
+        <Route
+          path="/leaderboard"
+          element={<Leaderboard playerScores={playerScores} />}
+        />{" "}
       </Routes>
     </Router>
   );

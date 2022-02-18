@@ -7,6 +7,8 @@ import ImageView from "./views/ImageView";
 import Leaderboard from "./views/Leaderboard";
 import Welcome from "./views/Welcome";
 
+import auth from "./utilities/auth";
+
 import {
   Button,
   Modal,
@@ -20,15 +22,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 
-function App() {
-  let initialScores = [
-    { name: "Jonathan Banks", time: 10.23 },
-    { name: "James Dean", time: 6.11 },
-    { name: "Sarah Connor", time: 3.23 },
-    { name: "Bill Max", time: 1.23 },
-    { name: "Tim Urban", time: 0.23 },
-  ];
-
+const App = ({ initialScores }) => {
   const [foundCharacters, setFoundCharacters] = useState({
     waldo: false,
     wenda: false,
@@ -46,6 +40,18 @@ function App() {
     console.log(startTime);
     setGameStart(true);
   };
+
+  //Wait for load on async
+  useEffect(() => {
+    async function loadData() {
+      let authMethods = await auth();
+      const login = await authMethods.authInit();
+      const initialScores = await authMethods.initialDataLoad();
+      setPlayerScores(initialScores);
+    }
+
+    loadData();
+  }, []);
 
   //Check for Endgame
   useEffect(() => {
@@ -96,6 +102,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;

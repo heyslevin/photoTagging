@@ -20,7 +20,7 @@ const Leaderboard = ({ playerScores }) => {
   const scoreList = playerScores.map((player) => {
     console.log(player);
     return (
-      <Tr>
+      <Tr key={player.name}>
         <Td>{player.name}</Td>
         <Td isNumeric>{player.time}</Td>
       </Tr>

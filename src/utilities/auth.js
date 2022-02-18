@@ -20,7 +20,7 @@ const auth = async function () {
   const db = getFirestore(app);
   const auth = getAuth();
 
-  const authInit = () => {
+  const authInit = async () => {
     // Sign in
     console.log(process.env.REACT_APP_email);
     console.log(process.env.REACT_APP_password);
@@ -54,7 +54,7 @@ const auth = async function () {
     return playersArray;
   };
 
-  return { authInit, initialDataLoad };
+  return { authInit, initialDataLoad, db };
 };
 
 export default auth;

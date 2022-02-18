@@ -33,6 +33,7 @@ const App = ({ initialScores }) => {
   const [allFound, setAllFound] = useState(false);
   const [startTime, setStartTime] = useState(undefined);
   const [playerScores, setPlayerScores] = useState(initialScores);
+  const [database, setDatabase] = useState("none");
 
   //Handle Start Click in Welcome
   const handleStartClick = () => {
@@ -48,10 +49,13 @@ const App = ({ initialScores }) => {
       const login = await authMethods.authInit();
       const initialScores = await authMethods.initialDataLoad();
       setPlayerScores(initialScores);
+      setDatabase(authMethods.db);
     }
 
     loadData();
   }, []);
+
+  //Write new data into
 
   //Check for Endgame
   useEffect(() => {
@@ -92,6 +96,7 @@ const App = ({ initialScores }) => {
               totalTime={totalTime}
               setFoundCharacters={setFoundCharacters}
               setPlayerScores={setPlayerScores}
+              database={database}
             />
           }
         />

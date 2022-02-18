@@ -43,12 +43,9 @@
 
 ### Next
 
-- Render List of Scores in LeaderBoard
-  - players.map( player => {
-    return (
-    <Tr>
-    <Td>{player.name}</Td>
-    <Td isNumeric>{player.time}s</Td>
-    </Tr>
-    )
-    })
+- Sort Players for leaderboard based on time
+
+  - Option 1: write player, then fetch list ordered
+  - Option 2: write player, and order list locally
+
+  https://stackoverflow.com/questions/5073799/how-to-sort-a-javascript-array-of-objects-by-nested-object-property

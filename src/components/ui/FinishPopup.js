@@ -11,10 +11,11 @@ import {
   Heading,
   Input,
 } from "@chakra-ui/react";
+import { addDoc, collection } from "firebase/firestore/lite";
 import { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
-const FinishPopup = ({ totalTime, allFound, setPlayerScores }) => {
+const FinishPopup = ({ totalTime, allFound, setPlayerScores, database }) => {
   const [name, setName] = useState();
 
   const {
@@ -33,11 +34,19 @@ const FinishPopup = ({ totalTime, allFound, setPlayerScores }) => {
     console.log(allFound);
   }, [allFound]);
 
+  const writeFirebase = async () => {
+    const docRef = await addDoc(collection(database, "players"), {
+      name: name,
+      time: totalTime,
+    });
+  };
+
   const handleSaveClick = () => {
     setPlayerScores((prevState) => [
       ...prevState,
       { name: name, time: totalTime },
     ]);
+    writeFirebase();
     onCloseModal();
   };
 

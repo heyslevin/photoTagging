@@ -28,12 +28,13 @@ const App = ({ initialScores }) => {
     wenda: false,
     magician: false,
   });
-  const [totalTime, setTotalTime] = useState("no time");
+  const [totalTime, setTotalTime] = useState(false);
   const [gameStart, setGameStart] = useState(false);
   const [allFound, setAllFound] = useState(false);
   const [startTime, setStartTime] = useState(undefined);
   const [playerScores, setPlayerScores] = useState(initialScores);
   const [database, setDatabase] = useState("none");
+  const [gameOver, setGameOver] = useState(false);
 
   //Handle Start Click in Welcome
   const handleStartClick = () => {
@@ -97,6 +98,8 @@ const App = ({ initialScores }) => {
               setFoundCharacters={setFoundCharacters}
               setPlayerScores={setPlayerScores}
               database={database}
+              gameOver={gameOver}
+              setGameOver={setGameOver}
             />
           }
         />

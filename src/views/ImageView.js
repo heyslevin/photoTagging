@@ -25,6 +25,8 @@ const ImageView = ({
   setFoundCharacters,
   setPlayerScores,
   database,
+  gameOver,
+  setGameOver,
 }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -157,6 +159,8 @@ const ImageView = ({
         allFound={allFound}
         setPlayerScores={setPlayerScores}
         database={database}
+        gameOver={gameOver}
+        setGameOver={setGameOver}
       />
       {/* <Modal isOpen={isOpenModal} onClose={onCloseModal}>
         <ModalOverlay />

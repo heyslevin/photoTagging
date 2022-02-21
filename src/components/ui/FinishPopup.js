@@ -12,10 +12,17 @@ import {
   Input,
 } from "@chakra-ui/react";
 import { addDoc, collection } from "firebase/firestore/lite";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
-const FinishPopup = ({ totalTime, allFound, setPlayerScores, database }) => {
+const FinishPopup = ({
+  totalTime,
+  allFound,
+  setPlayerScores,
+  database,
+  gameOver,
+  setGameOver,
+}) => {
   const [name, setName] = useState();
 
   const {
@@ -39,6 +46,7 @@ const FinishPopup = ({ totalTime, allFound, setPlayerScores, database }) => {
       name: name,
       time: totalTime,
     });
+    setGameOver(true);
   };
 
   const handleSaveClick = () => {
@@ -47,7 +55,6 @@ const FinishPopup = ({ totalTime, allFound, setPlayerScores, database }) => {
       { name: name, time: totalTime },
     ]);
     writeFirebase();
-    onCloseModal();
   };
 
   return (
@@ -63,14 +70,22 @@ const FinishPopup = ({ totalTime, allFound, setPlayerScores, database }) => {
           </Heading>
         </ModalBody>
         <ModalFooter>
-          <Input
-            mr={2}
-            placeholder="Enter your name"
-            onChange={(e) => setName(e.target.value)}
-          ></Input>
-          <Button as={RouterLink} onClick={handleSaveClick} to="/leaderboard">
-            Save Score
-          </Button>
+          {!gameOver && (
+            <React.Fragment>
+              <Input
+                mr={2}
+                placeholder="Enter your name"
+                onChange={(e) => setName(e.target.value)}
+              ></Input>
+              <Button
+                as={RouterLink}
+                onClick={handleSaveClick}
+                to="/leaderboard"
+              >
+                Save Score
+              </Button>
+            </React.Fragment>
+          )}
         </ModalFooter>
       </ModalContent>
     </Modal>

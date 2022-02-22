@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  HashRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import { useState } from "react";
 import Navbar from "./components/layout/Navbar";
@@ -73,7 +78,7 @@ const App = ({ initialScores }) => {
   }, [foundCharacters]);
 
   return (
-    <Router>
+    <Router basename="/photoTagging">
       <Navbar
         foundCharacters={foundCharacters}
         gameStart={gameStart}

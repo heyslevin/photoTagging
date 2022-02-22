@@ -4,15 +4,18 @@
 
 This is an exercise for the javascript course on The Odin Project. It's practice to understand better the following topics:
 
-- Unit Testing
 - React (Hooks, State Management)
 - CSS
 - HTML
 
 ## Tools
 
-- Chakra UI
+- Chakra UI (amazing)
+
+## Notes
+
+- Had a lot of trouble uploading, because of React Router. Switched to Hash Router and all good.
 
 ## Where can I play it?
 
-Not finished yet!
+https://heyslevin.github.io/photoTagging/

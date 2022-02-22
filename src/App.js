@@ -22,6 +22,10 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 
+useEffect(() => {
+  document.title = "🔍 Find Waldo";
+}, []);
+
 const App = ({ initialScores }) => {
   const [foundCharacters, setFoundCharacters] = useState({
     waldo: false,

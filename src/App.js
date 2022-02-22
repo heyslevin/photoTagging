@@ -73,7 +73,7 @@ const App = ({ initialScores }) => {
   }, [foundCharacters]);
 
   return (
-    <Router basename="/photoTagging">
+    <Router>
       <Navbar
         foundCharacters={foundCharacters}
         gameStart={gameStart}

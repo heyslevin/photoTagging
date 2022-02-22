@@ -61,7 +61,7 @@ const Navbar = ({ gameStart, foundCharacters, allFound }) => {
       <Flex flex="1" justify="flex-end">
         {gameStart && <Timer allFound={allFound} />}
         <Link as={RouterLink} to="/leaderboard">
-          View Leaderboard
+          View Leaderboard V2
         </Link>
       </Flex>
     </HStack>

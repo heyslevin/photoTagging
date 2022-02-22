@@ -54,7 +54,7 @@ const Navbar = ({ gameStart, foundCharacters, allFound }) => {
       <Flex flex="1" justify="center">
         <Center>
           <Heading as={RouterLink} to="/game">
-            Where's Waldo?
+            Where's Waldo? V2
           </Heading>
         </Center>
       </Flex>

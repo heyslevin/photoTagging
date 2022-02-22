@@ -2,7 +2,6 @@
   "name": "photo-tagging",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://heyslevin.github.io/photoTagging/",
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.6.12",
@@ -48,5 +47,6 @@
   },
   "devDependencies": {
     "gh-pages": "^3.2.3"
-  }
+  },
+  "homepage": "https://heyslevin.github.io/photoTagging/"
 }

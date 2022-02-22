@@ -22,10 +22,6 @@ import {
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 
-useEffect(() => {
-  document.title = "🔍 Find Waldo";
-}, []);
-
 const App = ({ initialScores }) => {
   const [foundCharacters, setFoundCharacters] = useState({
     waldo: false,
@@ -46,6 +42,10 @@ const App = ({ initialScores }) => {
     console.log(startTime);
     setGameStart(true);
   };
+
+  useEffect(() => {
+    document.title = "🔍 Find Waldo";
+  }, []);
 
   //Wait for load on async
   useEffect(() => {
